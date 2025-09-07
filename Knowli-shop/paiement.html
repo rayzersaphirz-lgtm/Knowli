@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement - Knowli</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #007e5f);
+      margin: 0;
+      padding: 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .paiement-box {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #paypal-button-container {
+      margin-top: 20px;
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="paiement-box">
+    <h1>💳 Finaliser votre paiement</h1>
+    <p class="total">Total à payer : <span id="montant"></span> €</p>
+
+    <!-- Bouton PayPal -->
+    <div id="paypal-button-container"></div>
+  </div>
+
+  <!-- SDK PayPal -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AR-7tvPr-l1wl2yOwfIYCe5RofSjsHAV-x3SiYudEnOQYvCbUaap7U0hZoI8Ab9BALQ2MuFWTJD9V7gH&currency=EUR"></script>
+
+  <script>
+    // Récupérer le total depuis l'URL
+    const params = new URLSearchParams(window.location.search);
+    const total = params.get("total") || "0.00";
+
+    // Afficher le montant
+    document.getElementById("montant").innerText = total;
+
+    // Bouton PayPal
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: total }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert("✅ Paiement réussi, merci " + details.payer.name.given_name + " !");
+          localStorage.removeItem('panier');
+          window.location.href = "index.html"; // retour accueil
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+
+</body>
+</html>
+
