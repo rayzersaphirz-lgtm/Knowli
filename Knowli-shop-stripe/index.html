@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowli - Boutique en ligne</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+  <img src="images/Knowli2.png" alt="Logo Knowli" class="logo">
+  <h2>KNOWLI</h2>
+  <ul>
+    <li><a href="index.html">🏠 Accueil</a></li>
+    <li><a href="boutique.html">🛍️ Boutique</a></li>
+    <li><a href="panier.html">🛒 Panier</a></li>
+    <li><a href="mailto:loreaunolhan21@gmail.com" class="btn-contact">📧 Contactez-nous</a>
+</li>
+  </ul>
+</div>
+
+  <!-- Hero -->
+  <div class="hero">
+  <h1>Découvrez Knowli</h1>
+  <p>Votre boutique unique, inspirée par l'astuce et le savoir.</p>
+  <a href="https://discord.gg/vAb9x8hG" class="btn-discord">Rejoindre notre Discord</a>
+</div>
+
+
+  <!-- Produits -->
+  <section id="produits" class="produits">
+    <h2>Produits en vedette</h2>
+    <div class="grid">
+      <div class="card">
+  <img src="images/iphone-15-rose.png" alt="Iphone 15">
+  <h3>Iphone 15 (+formation resell)</h3>
+  <p class="price">19.99	 €</p>
+  <p class="desc">Fournisseur le moins cher iphone 15 64-128-256 Go avec couleur noir,bleu,vert,rose et jaune</p>
+  <p class="stock">✅ En stock</p>
+  <button class="btn-acheter" onclick="ajouterAuPanier('Iphone 15 (+formation resell)', 19.99)">Acheter</button>
+
+
+</div>
+
+      <div class="card">
+  <img src="images/theone.png" alt="Refund Uber eats">
+  <h3>Refund Uber eats</h3>
+  <p class="price">9.99 €</p>
+  <p class="desc">Refund Uber eats pour ne pas payer les repas commander.</p>
+  <p class="stock">✅ En stock</p>
+  <button class="btn-acheter" onclick="ajouterAuPanier('Refund Uber eats', 9.99)">Acheter</button>
+
+
+</div>
+
+      <div class="card">
+  <img src="images/yomi.png" alt="Formation Yomi Denzel">
+  <h3>Formation Yomi Denzel</h3>
+  <p class="price">9.99 €</p>
+  <p class="desc">Formation Yomi denzel les secrets de l'ecommerce.</p>
+  <p class="stock">✅ En stock</p>
+  <button class="btn-acheter" onclick="ajouterAuPanier('Formation Yomi Denzel', 9.99)">Acheter</button>
+</div>
+</div>
+  </section>
+
+  <!-- Pourquoi Knowli -->
+  <section class="why">
+    <h2>Pourquoi Knowli ?</h2>
+    <div class="grid">
+      <div>
+        <h3>🌿 Éthique</h3>
+        
+      </div>
+      <div>
+        <h3>⚡ Rapide</h3>
+        <p>Expédition sous 48h par mail.</p>
+      </div>
+      <div>
+        <h3>🔒 Sécurisé</h3>
+        <p>Paiements protégés par Stripe & PayPal.</p>
+      </div>
+    </div>
+  </section>
+ 
+	 <!-- Footer -->
+  <footer>
+    <p>© 2025 Knowli - Tous droits réservés.</p>
+    <p><a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+  </footer>
+
+<script>
+  let cartItems = [];
+  let total = 0;
+
+  function addToCart(product, price) {
+    cartItems.push({ product, price });
+    total += price;
+
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartList = document.getElementById("cart-items");
+    const totalText = document.getElementById("total");
+    const cart = document.getElementById("cart");
+
+    cartList.innerHTML = "";
+    cartItems.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.product} - ${item.price} €`;
+      cartList.appendChild(li);
+    });
+
+    totalText.textContent = `Total : ${total} €`;
+    cart.style.display = "block";
+  }
+
+  function checkout() {
+    alert("Redirection vers le paiement (à configurer plus tard).");
+  }
+</script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe("pk_test_51S4jmxBdDEqJ5Q8w3RPifMa361dkumZlbvqdz4HHdsABWfTiWz0suVr7o2cKAZUBBwV7K7BFq4Bf7qwQGiOypFtr00ORCQkrNi"); // Mets ta clé publishable Stripe
+
+  function payer() {
+    fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+    })
+    .then(res => res.json())
+    .then(session => {
+      return stripe.redirectToCheckout({ sessionId: session.id });
+    });
+  }
+</script>
+
+<button onclick="payer()">Payer</button>
+
+</body>
+</html>
+
