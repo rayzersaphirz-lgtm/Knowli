@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produits Digitaux - CoqueShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">📱 CoqueShop</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="produits-digitaux.html">Produits Digitaux</a></li>
+      <li><a href="Panier.html">Panier 🛍️</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Nos Produits Digitaux</h1>
+  <p>Formations, services et outils pour booster votre business 🚀</p>
+</section>
+
+<!-- Section Produits Digitaux -->
+<section class="products">
+  <h2>Découvrez nos services</h2>
+  <div class="product-container">
+
+    <!-- Formation -->
+<div class="product-card">
+  <img src="images/ecom.png" alt="Formation">
+  <h3>📚 Formations</h3>
+  <p>Choisissez parmi nos meilleures formations e-commerce et business :</p>
+  
+  <!-- Menu déroulant -->
+  <select id="formation-select">
+    <option value="Marcus Lawrence|9.99">✨ Formation 1 — [Marcus Lawrence] — 9,99 €</option>
+    <option value="Yomi Denzel|9.99">✨ Formation 2 — [Yomi Denzel] — 9,99 €</option>
+    <option value="Resell|7.99">✨ Formation 3 — [Formation Resell] — 7,99 €</option>
+  </select>
+  
+  <button onclick="addFormationToCart(this)">Ajouter au panier</button>
+</div>
+
+
+   <!-- Fournisseurs & Achat-Revente -->
+<div class="product-card">
+  <img src="images/fourni.png" alt="Fournisseurs">
+  <h3>🤝 Fournisseurs & Achat-Revente</h3>
+  <p>Sélectionnez un fournisseur ou le pack complet :</p>
+
+  <select id="fournisseur-select">
+    <option value="Airpods|5">📦 Fournisseur Airpods — 5 €</option>
+    <option value="iPhone 15 + Formation Resell|19.99">📱 Fournisseur iPhone 15 (+ formation resell) — 19,99 €</option>
+    <option value="iPhone 14 Pro|9.99">📱 Fournisseur iPhone 14 Pro — 9,99 €</option>
+    <option value="iPhone 16 Pro|13.99">📱 Fournisseur iPhone 16 Pro — 13,99 €</option>
+    <option value="iPhone 14 Pro Max|11.99">📱 Fournisseur iPhone 14 Pro Max — 11,99 €</option>
+    <option value="3 Fournisseurs de Puff|12.99">💨 3 Fournisseurs de Puff — 12,99 €</option>
+    <option value="Coque Stone Island|1">🧩 Fournisseur coque Stone Island — 1 €</option>
+    <option value="Coque CP Company|1">🧩 Fournisseur coque CP Company — 1 €</option>
+    <option value="Coque Vrunk|1">🧩 Fournisseur coque Vrunk — 1 €</option>
+    <option value="Pull-over CP Company|3">👕 Fournisseur Pull-over coton CP Company — 3 €</option>
+    <option value="Warzone Unlockall|7">🎮 Fournisseur Warzone Unlockall/Cheat — 7 €</option>
+    <option value="Maillot Venom UFC|4">🥋 Fournisseur Maillot Venom UFC — 4 €</option>
+    <option value="T-shirt unicolore|3">👕 Fournisseur T-shirt unicolore — 3 €</option>
+    <option value="Maillot concept Brésil|4">⚽ Fournisseur Maillot concept Brésil — 4 €</option>
+    <option value="Lunettes style Versace|5">🕶️ Fournisseur Lunettes de soleil style Versace — 5 €</option>
+    <option value="Casquette Gucci|6">🧢 Fournisseur Casquette Gucci — 6 €</option>
+    <option value="T-shirt Trapstar|7.5">👕 Fournisseur T-shirt Trapstar — 7,5 €</option>
+    <option value="Pack Fournisseurs Pro MAX|49.99">🚀 Pack Fournisseurs Pro MAX (tous compris) — 49,99 €</option>
+  </select>
+
+  <button onclick="addFournisseurToCart(this)">Ajouter au panier</button>
+</div>
+
+
+   <!-- Création de site web / boutique -->
+<div class="product-card">
+  <img src="images/site.png" alt="Création site web">
+  <h3>🌐 Création de site web & boutiques</h3>
+  <p>Choisissez votre type de site :</p>
+
+  <select id="site-select">
+    <option value="Boutique en ligne clé en main|24.99">🛒 Boutique en ligne clé en main — 24,99 €</option>
+    <option value="Site vitrine simple|10">🌐 Site vitrine simple et efficace — 10 €</option>
+  </select>
+
+  <button onclick="addSiteToCart(this)">Ajouter au panier</button>
+</div>
+
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>📱 Coques iPhone | 🎓 Formations | 🤝 Fournisseurs | 🌐 Sites web</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
