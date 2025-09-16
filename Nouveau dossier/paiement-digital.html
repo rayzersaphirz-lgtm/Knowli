@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paiement Produits Digitaux</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    background: linear-gradient(120deg,#0f0c29,#302b63,#24243e);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+h1 { font-size: 36px; color: #ff416c; text-shadow: 0 0 15px #ffd700; margin-bottom: 20px; }
+h2 { font-size: 28px; margin-bottom: 20px; color: #ffd700; text-shadow: 0 0 10px #ff416c; }
+
+#order-summary {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 20px;
+    list-style: none;
+    box-shadow: 0 0 20px #ff416c;
+}
+#order-summary li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+form {
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 25px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 0 30px #ff416c;
+    text-align: left;
+}
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #ffd700;
+}
+form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+form button {
+    background: #ff416c;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 0 20px #ffd700;
+    transition: 0.3s;
+}
+form button:hover {
+    background: #ff4b2b;
+    box-shadow: 0 0 30px #ffd700, 0 0 40px #ff416c;
+}
+</style>
+</head>
+<body>
+
+<h1>Paiement Produits Digitaux</h1>
+<h2>Résumé de votre commande :</h2>
+<ul id="order-summary"></ul>
+
+<form id="digital-form">
+    <label>Email ou Numéro de téléphone</label>
+    <input type="text" name="contact" required>
+    <button type="submit">Valider et Payer</button>
+</form>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("vAw_KDZcAotBjQKFT"); // Public Key
+  })();
+</script>
+
+<script>
+// Récupérer le panier depuis localStorage
+const summaryContainer = document.getElementById('order-summary');
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Afficher seulement les produits digitaux (ex : ceux sans frais de livraison)
+cart.forEach(item => {
+    if(!item.fraisLivraison || item.fraisLivraison === 0){ 
+        const li = document.createElement('li');
+        li.textContent = `${item.name}${item.model ? ' ('+item.model+')' : ''} - €${item.price.toFixed(2)}`;
+        summaryContainer.appendChild(li);
+    }
+});
+
+// Envoyer le formulaire avec EmailJS
+document.getElementById('digital-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(cart.length === 0){
+        alert("Votre panier est vide !");
+        return;
+    }
+
+    const formData = new FormData(this);
+    const emailData = {
+        contact: formData.get('contact'),
+        cart: JSON.stringify(cart, null, 2)
+    };
+
+    emailjs.send("service_l9heukv", "service_l9heukv", emailData)
+    .then(() => {
+        alert("✅ Votre commande digitale a été envoyée !");
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html';
+    })
+    .catch(err => {
+        console.error("Erreur EmailJS :", err);
+        alert("❌ Erreur lors de l'envoi, vérifie la console pour détails.");
+    });
+});
+</script>
+
+</body>
+</html>
+
