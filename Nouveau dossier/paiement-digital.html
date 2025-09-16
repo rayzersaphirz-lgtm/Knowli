@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement Produits Physiques</title>
+  <style>
+    body {
+      background: linear-gradient(120deg,#0f0c29,#302b63,#24243e);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    h1 { font-size: 32px; color: #ff416c; text-shadow: 0 0 15px #ffd700; margin-bottom: 20px; }
+    h2 { font-size: 24px; margin-bottom: 20px; color: #ffd700; text-shadow: 0 0 10px #ff416c; }
+
+    #order-summary {
+      max-width: 500px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 20px;
+      list-style: none;
+      box-shadow: 0 0 20px #ff416c;
+      text-align: left;
+    }
+    #order-summary li {
+      padding: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    form {
+      background: rgba(0,0,0,0.7);
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: 20px auto;
+      box-shadow: 0 0 30px #ff416c;
+      text-align: left;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #ffd700;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 15px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    form button {
+      display: block;
+      width: 100%;
+      background: #ff416c;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 0 20px #ffd700;
+      transition: 0.3s;
+      text-align: center;
+    }
+    form button:hover {
+      background: #ff4b2b;
+      box-shadow: 0 0 30px #ffd700, 0 0 40px #ff416c;
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Paiement Produits Physiques</h1>
+  <h2>Résumé de votre commande :</h2>
+  <ul id="order-summary"></ul>
+
+  <form id="payment-form">
+    <label>Nom & Prénom</label>
+    <input type="text" name="fullname" required>
+    
+    <label>Adresse</label>
+    <input type="text" name="address" required>
+    
+    <label>Code Postal</label>
+    <input type="text" name="zipcode" required>
+    
+    <label>Ville</label>
+    <input type="text" name="city" required>
+    
+    <label>Numéro de téléphone</label>
+    <input type="tel" name="phone" required>
+    
+    <button type="submit">Valider et Payer</button>
+  </form>
+
+  <p class="note">⚠️ Se fier aux prix affichés dans le panier, ce sont les bons.</p>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Initialisation EmailJS
+    (function() {
+      emailjs.init({
+        publicKey: "pUutoDmxJotTWS9BmrcrE" // ⚠️ remplace par ta vraie clé publique
+      });
+    })();
+
+    // Récupération du panier
+    const summaryContainer = document.getElementById('order-summary');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let cartText = "";
+    cart.forEach(item => {
+      let prixProduit = item.basePrice || item.price || 0;
+      let livraison = item.fraisLivraison || 2.99;
+      let total = (prixProduit + livraison).toFixed(2);
+
+      const li = document.createElement('li');
+      li.textContent = `${item.name}${item.model ? ' ('+item.model+')' : ''} - ${prixProduit.toFixed(2)}€ + ${livraison.toFixed(2)}€ (Livraison) = ${total}€`;
+      summaryContainer.appendChild(li);
+
+      cartText += `${item.name}${item.model ? ' ('+item.model+')' : ''} : ${prixProduit}€ + ${livraison}€ = ${total}€\n`;
+    });
+
+    // Envoi du formulaire
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if(cart.length === 0){
+        alert("Votre panier est vide !");
+        return;
+      }
+
+      const formData = new FormData(form);
+      const data = {
+        fullname: formData.get('fullname'),
+        address: formData.get('address'),
+        zipcode: formData.get('zipcode'),
+        city: formData.get('city'),
+        phone: formData.get('phone'),
+        cart: cartText
+      };
+
+      emailjs.send("service_7i1dybg", "template_7rj0c8a", data)
+      .then(() => {
+          alert("✅ Commande envoyée avec succès !");
+          localStorage.removeItem('cart');
+          window.location.href = "merci.html"; // redirige vers une page de remerciement
+      }, (err) => {
+          console.error("Erreur EmailJS :", err);
+          alert("❌ Erreur lors de l'envoi, vérifie la console.");
+      });
+    });
+  </script>
+</body>
+</html>
