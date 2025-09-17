@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoqueShop - Boutique</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">📱 CoqueShop</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="produits-digitaux.html">Produits Digitaux</a></li>
+      <li><a href="Panier.html">Panier 🛍️</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Notre Boutique</h1>
+  <p>Découvrez toutes nos coques iPhone à seulement 3 € ✨</p>
+</section>
+
+<!-- Section Coques -->
+<section id="produits" class="products">
+  <h2>Nos Coques</h2>
+  <div class="product-container" id="product-container">
+    
+    <!-- Gris -->
+    <div class="product-card">
+      <img src="images/gris.png" alt="Coque Gris">
+      <h3>Gris</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Gris', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Blanc -->
+    <div class="product-card">
+      <img src="images/blanc.png" alt="Coque Blanc">
+      <h3>Blanc</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Blanc', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Violet -->
+    <div class="product-card">
+      <img src="images/violet.png" alt="Coque Violet">
+      <h3>Violet</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Violet', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Rose -->
+    <div class="product-card">
+      <img src="images/rose.png" alt="Coque Rose">
+      <h3>Rose</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Rose', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Bleu -->
+    <div class="product-card">
+      <img src="images/bleu.png" alt="Coque Bleu">
+      <h3>Bleu</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Bleu', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Vert -->
+    <div class="product-card">
+      <img src="images/vert.png" alt="Coque Vert">
+      <h3>Vert</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Vert', this)">Ajouter au panier</button>
+    </div>
+
+    <!-- Multicolore -->
+    <div class="product-card">
+      <img src="images/multicolore.png" alt="Coque Multicolore">
+      <h3>Multicolore</h3>
+      <p>3 €</p>
+      <select>
+        <option>iPhone 12</option>
+        <option>iPhone 13</option>
+        <option>iPhone 14</option>
+        <option>iPhone 15</option>
+      </select>
+      <button onclick="addToCart('Multicolore', this)">Ajouter au panier</button>
+    </div>
+<!-- T-shirt Rose -->
+<div class="product-card">
+  <img src="images/Trose.png" alt="T-shirt Rose">
+  <h3>T-shirt Rose</h3>
+  <p>5 €</p>
+  <select>
+    <option disabled>S (Rupture de stock)</option>
+    <option>M</option>
+    <option disabled>L (Rupture de stock)</option>
+    <option disabled>XL (Rupture de stock)</option>
+  </select>
+  <button onclick="addToCart('T-shirt Rose', this)">Ajouter au panier</button>
+</div>
+
+<!-- T-shirt Bleu -->
+<div class="product-card">
+  <img src="images/Tbleu.png" alt="T-shirt Bleu">
+  <h3>T-shirt Bleu</h3>
+  <p>5 €</p>
+  <select>
+    <option disabled>S (Rupture de stock)</option>
+    <option>M</option>
+    <option disabled>L (Rupture de stock)</option>
+    <option disabled>XL (Rupture de stock)</option>
+  </select>
+  <button onclick="addToCart('T-shirt Bleu', this)">Ajouter au panier</button>
+</div>
+
+<!-- T-shirt Noir -->
+<div class="product-card">
+  <img src="images/Tnoir.png" alt="T-shirt Noir">
+  <h3>T-shirt Noir</h3>
+  <p>5 €</p>
+  <select>
+    <option disabled>S (Rupture de stock)</option>
+    <option>M</option>
+    <option disabled>L (Rupture de stock)</option>
+    <option disabled>XL (Rupture de stock)</option>
+  </select>
+  <button onclick="addToCart('T-shirt Noir', this)">Ajouter au panier</button>
+</div>
+
+<!-- T-shirt Blanc -->
+<div class="product-card">
+  <img src="images/Tblanc.png" alt="T-shirt Blanc">
+  <h3>T-shirt Blanc</h3>
+  <p>5 €</p>
+  <select>
+    <option disabled>S (Rupture de stock)</option>
+    <option>M</option>
+    <option disabled>L (Rupture de stock)</option>
+    <option disabled>XL (Rupture de stock)</option>
+  </select>
+  <button onclick="addToCart('T-shirt Blanc', this)">Ajouter au panier</button>
+</div>
+
+<!-- T-shirt Gris -->
+<div class="product-card">
+  <img src="images/Tgris.png" alt="T-shirt Gris">
+  <h3>T-shirt Gris</h3>
+  <p>5 €</p>
+  <select>
+    <option disabled>S (Rupture de stock)</option>
+    <option>M</option>
+    <option disabled>L (Rupture de stock)</option>
+    <option disabled>XL (Rupture de stock)</option>
+  </select>
+  <button onclick="addToCart('T-shirt Gris', this)">Ajouter au panier</button>
+</div>
+<div style="margin: 50px auto; padding: 30px; max-width: 800px; 
+            background: rgba(0, 0, 0, 0.8); 
+            border-radius: 15px; 
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.4); 
+            text-align: center;">
+    <h2 style="color: white; font-size: 28px; margin-bottom: 15px;">
+        Ton format pour les coques de téléphones 📱 ou ta taille de t-shirt 👕 n'est pas disponible ?
+    </h2>
+    <p style="color: #ccc; font-size: 18px; margin-bottom: 20px;">
+        Pas de souci ! Il te suffit de rejoindre notre serveur <strong style="color:#00ff99;">Discord</strong>  
+        et d’ouvrir un <span style="color:#00ff99; font-weight:bold;">ticket</span> 🎫.  
+        Nous traiterons ta demande rapidement ✅
+    </p>
+    <a href="https://discord.gg/nKPZjEUc" target="_blank" 
+       style="display:inline-block; margin-top:10px; padding:12px 25px; 
+              background: #00ff99; color:black; font-weight:bold; 
+              border-radius: 8px; text-decoration:none; 
+              box-shadow: 0 0 15px #00ff99; transition: 0.3s;">
+        👉 Rejoindre le Discord & ouvrir un ticket
+    </a>
+</div>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <p>© 2025 CoqueShop. Tous droits réservés.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

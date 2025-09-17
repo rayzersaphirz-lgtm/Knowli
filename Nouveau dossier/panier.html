@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier 🛍️ - CoqueShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">📱 CoqueShop</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="produits-digitaux.html">Produits Digitaux</a></li>
+      <li><a href="Panier.html">Panier 🛍️</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="cart">
+  <h2>Mon Panier 🛍️</h2>
+<div id="cart-warning" style="
+    background: #ff416c;
+    color: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 15px #ffd700;
+">
+⚠️ Attention : fiez-vous toujours au prix total du panier et non au résumé de commande.
+</div>
+
+  <ul id="cart-items">
+    <!-- Les produits ajoutés seront injectés ici via script.js -->
+  </ul>
+
+  <div class="total">
+    Total: €<span id="cart-total">0.00</span>
+  </div>
+
+<div class="cart-footer">
+    <span id="cart-total"></span>
+   <button id="payer-btn">Payer</button>
+
+
+
+  <div class="cart-buttons" style="display:flex; gap:20px; justify-content:center; margin-top:30px;">
+    <button id="clear-cart">Vider le panier</button>
+    <a href="boutique.html">
+  </div>
+</section>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', updateCart);
+
+  // Vider le panier
+  document.getElementById('clear-cart').addEventListener('click', function() {
+      localStorage.removeItem('cart');
+      cart = [];
+      updateCart();
+  });
+</script>
+
+</body>
+</html>
+
