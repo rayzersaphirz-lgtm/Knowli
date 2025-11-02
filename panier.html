@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier - Layzox Shop</title>
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: url('Images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header {
+      background: rgba(17,17,17,0.85);
+      padding:15px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header a { color:#ff00ff; text-decoration:none; font-weight:bold; }
+    h1 { color:#ff00ff; margin:20px; }
+    .cart-container {
+      padding:20px 30px;
+      background: rgba(17,17,17,0.7);
+      margin:20px auto;
+      border-radius:12px;
+      max-width:800px;
+    }
+    .cart-item {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid #ff00ff;
+      padding:10px 0;
+    }
+    .cart-item:last-child { border-bottom:none; }
+    .cart-item button {
+      background:#ff00ff;
+      border:none;
+      padding:5px 10px;
+      border-radius:8px;
+      color:#fff;
+      cursor:pointer;
+    }
+    .cart-item button:hover { background:rgba(255,0,255,0.85); }
+    .cart-actions { margin-top:20px; display:flex; justify-content:space-between; }
+    .cart-actions button {
+      background:#ff00ff;
+      border:none;
+      padding:10px 20px;
+      border-radius:12px;
+      cursor:pointer;
+      color:#fff;
+      font-size:1rem;
+    }
+    .cart-actions button:hover { background:rgba(255,0,255,0.85); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Panier</h1>
+    <a href="index.html">← Retour à la boutique</a>
+  </header>
+
+  <div class="cart-container" id="cartContainer">
+    <!-- Les produits du panier apparaîtront ici -->
+  </div>
+
+  <script>
+    function loadCart() {
+      const container = document.getElementById('cartContainer');
+      container.innerHTML = '';
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if(cart.length === 0) {
+        container.innerHTML = '<p>Votre panier est vide !</p>';
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item,index) => {
+        total += item.price;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <span>${item.name} — ${item.price.toFixed(2)} €</span>
+          <button onclick="removeItem(${index})">Supprimer</button>
+        `;
+        container.appendChild(div);
+      });
+
+      const actions = document.createElement('div');
+      actions.className = 'cart-actions';
+      actions.innerHTML = `
+        <strong>Total: ${total.toFixed(2)} €</strong>
+        <div>
+          <button onclick="clearCart()">Vider le panier</button>
+          <button onclick="checkout()">Payer</button>
+        </div>
+      `;
+      container.appendChild(actions);
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index,1);
+      localStorage.setItem('cart',JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      if(confirm('Voulez-vous vraiment vider le panier ?')) {
+        localStorage.removeItem('cart');
+        loadCart();
+      }
+    }
+
+    function checkout() {
+      window.location.href = 'paiement.html';
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>

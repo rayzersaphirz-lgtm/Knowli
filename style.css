@@ -1,0 +1,341 @@
+/* ----- GLOBAL ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0b0b0b;
+  color: #fff;
+}
+
+/* ----- HEADER ----- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #000, #ff0000);
+  padding: 15px 50px;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+header h1 {
+  font-size: 1.8em;
+  color: #fff;
+  text-shadow: 0 0 10px #ff1a1a;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ff1a1a;
+  text-shadow: 0 0 10px #ff1a1a;
+}
+
+/* ----- HERO ----- */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  border-bottom: 2px solid #ff0000;
+  box-shadow: 0 0 30px #ff0000;
+}
+
+.hero h2 {
+  font-size: 2em;
+  color: #ff1a1a;
+  text-shadow: 0 0 20px #ff0000;
+}
+
+.hero p {
+  color: #ddd;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+/* ----- PRODUCTS ----- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 50px;
+}
+
+.product-card {
+  background: linear-gradient(145deg, #0d0d0d, #1a0000);
+  border: 2px solid #ff0000;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px #ff0000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px #ff1a1a;
+}
+
+.product-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: #000;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  color: #ff1a1a;
+  margin: 10px 0 5px;
+  text-shadow: 0 0 8px #ff0000;
+}
+
+.product-card p {
+  font-size: 0.9em;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+
+/* ----- OPTIONS ----- */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.options button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #fff;
+}
+
+.option1 {
+  background: #ff1a1a;
+  box-shadow: 0 0 10px #ff1a1a;
+}
+
+.option2 {
+  background: linear-gradient(90deg, #ff0000, #660000);
+  box-shadow: 0 0 15px #ff0000;
+}
+
+.options button:hover {
+  transform: scale(1.05);
+  background: #fff;
+  color: #ff0000;
+  box-shadow: 0 0 20px #ff1a1a;
+}
+
+/* ----- FOOTER ----- */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #ff0000;
+  background: #0a0a0a;
+  box-shadow: 0 0 15px #ff0000;
+}
+
+footer p {
+  color: #aaa;
+  font-size: 0.9em;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #000, #ff0000);
+  padding: 15px 30px;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+h1 {
+  font-size: 1.8em;
+  letter-spacing: 2px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+a:hover {
+  color: #ff0000;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
+
+.product-card {
+  background: #111;
+  border: 2px solid #ff0000;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px #ff0000;
+  transition: transform 0.3s;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 8px #ff0000);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button {
+  background: #ff0000;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+button:hover {
+  background: white;
+  color: #ff0000;
+  box-shadow: 0 0 20px #ff0000;
+}
+
+.cart-page {
+  padding: 40px;
+}
+
+.cart-item {
+  background: #111;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border-left: 4px solid #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+}
+/* -------- Page paiement -------- */
+.payment-steps {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step {
+  background: #111;
+  border: 2px solid #ff0000;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #ff0000;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.step h2 {
+  margin: 0;
+  padding: 15px 20px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #000, #ff0000);
+  color: #fff;
+}
+
+.step .content {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step.active .content {
+  max-height: 500px;
+  opacity: 1;
+  padding: 20px;
+}
+
+input[type="text"], input[type="email"] {
+  background: #222;
+  border: 1px solid #ff0000;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+label {
+  margin: 5px 0;
+}
+
+.confirm-btn, .pay-btn {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff0000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.confirm-btn:hover, .pay-btn:hover {
+  background: white;
+  color: #ff0000;
+  box-shadow: 0 0 25px #ff0000;
+}
+.product-card .description {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 8px 0;
+  min-height: 40px; /* aligne les cartes */
+}
+/* Grille produits avec moins de produits par ligne */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* plus large pour chaque produit */
+  gap: 25px;
+  padding: 40px;
+}
+
+/* Boutons centrés et texte sur une seule ligne */
+.buttons button {
+  white-space: nowrap; /* empêche le texte de passer à la ligne */
+  text-align: center;
+  font-size: 0.95rem;
+  padding: 10px 16px;
+}

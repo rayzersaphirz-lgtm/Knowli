@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layzox Shop</title>
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: url('Images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background: rgba(17,17,17,0.85);
+      padding:15px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:none;
+    }
+    header a {
+      color:#ff00ff;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    h1 { margin:0; color:#ff00ff; }
+    h2 { color:#ff00ff; border-bottom:none; padding-bottom:5px; margin-top:30px; }
+
+    .products {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:20px;
+      padding:20px 30px;
+    }
+    .product-card {
+      background: rgba(17,17,17,0.7);
+      border:none;
+      border-radius:12px;
+      padding:15px;
+      text-align:center;
+      transition:transform 0.3s;
+    }
+    .product-card:hover { transform:scale(1.05); box-shadow:0 0 15px #ff00ff; }
+    .product-card h3 { margin:5px 0; font-size:1.1rem; }
+    .product-card .description { font-size:0.85rem; color:#ccc; margin-bottom:10px; min-height:40px; }
+
+    .buttons button {
+      margin:5px 0;
+      padding:8px 12px;
+      background:#ff00ff;
+      border:none;
+      border-radius:8px;
+      color:#fff;
+      cursor:pointer;
+      width:100%;
+      white-space:nowrap;
+      transition:0.3s;
+    }
+    .buttons button:hover { background:rgba(255,0,255,0.85); color:#fff; box-shadow:0 0 15px #ff00ff; }
+
+    @media (max-width:1200px) { .products { grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:768px) { .products { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:480px) { .products { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Layzox Shop</h1>
+    <a href="panier.html">Panier 🛒</a>
+  </header>
+
+  <!-- Comptes numériques -->
+  <h2>Comptes numériques</h2>
+  <div class="products">
+    <div class="product-card"><h3>Compte Netflix</h3>
+      <div class="buttons">
+        <button onclick="addToCart('Netflix — 1 mois',1.49)">1 Mois — 1,49 €</button>
+        <button onclick="addToCart('Netflix — à vie',4.99)">À vie — 4,99 €</button>
+      </div>
+    </div>
+    <div class="product-card"><h3>Compte Spotify</h3>
+      <div class="buttons">
+        <button onclick="addToCart('Spotify — 1 mois',1.49)">1 Mois — 1,49 €</button>
+        <button onclick="addToCart('Spotify — à vie',4.99)">À vie — 4,99 €</button>
+      </div>
+    </div>
+    <div class="product-card"><h3>Compte Crunchyroll</h3>
+      <div class="buttons">
+        <button onclick="addToCart('Crunchyroll — 1 mois',1.49)">1 Mois — 1,49 €</button>
+        <button onclick="addToCart('Crunchyroll — à vie',4.99)">À vie — 4,99 €</button>
+      </div>
+    </div>
+    <div class="product-card"><h3>Compte Disney+</h3>
+      <div class="buttons">
+        <button onclick="addToCart('Disney+ — 1 mois',1.49)">1 Mois — 1,49 €</button>
+        <button onclick="addToCart('Disney+ — à vie',4.99)">À vie — 4,99 €</button>
+      </div>
+    </div>
+    <div class="product-card"><h3>Compte NordVPN</h3>
+      <div class="buttons">
+        <button onclick="addToCart('NordVPN — 1 mois',1.49)">1 Mois — 1,49 €</button>
+        <button onclick="addToCart('NordVPN — à vie',4.99)">À vie — 4,99 €</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jeux vidéo -->
+  <h2>Jeux & plateformes</h2>
+  <div class="products">
+    <div class="product-card"><h3>Compte Steam</h3><div class="buttons"><button onclick="addToCart('Fournisseur Steam',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>Compte Valorant</h3><div class="buttons"><button onclick="addToCart('Fournisseur Valorant',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>Compte Xbox</h3><div class="buttons"><button onclick="addToCart('Fournisseur Xbox',5)">Ajouter au panier — 5 €</button></div></div>
+  </div>
+
+  <!-- Formations -->
+  <h2>Formations</h2>
+  <div class="products">
+    <div class="product-card"><h3>Formation 1 — Marcus Lawrence</h3><div class="description">Apprendre à lancer un business en ligne rentable</div><div class="buttons"><button onclick="addToCart('Formation 1 — Marcus Lawrence',9.99)">Ajouter au panier — 9,99 €</button></div></div>
+    <div class="product-card"><h3>Formation 2 — Yomi Denzel</h3><div class="description">Maîtriser le marketing digital et développer vos ventes</div><div class="buttons"><button onclick="addToCart('Formation 2 — Yomi Denzel',9.99)">Ajouter au panier — 9,99 €</button></div></div>
+    <div class="product-card"><h3>Formation 3 — Resell</h3><div class="description">Maîtriser le marketing digital et développer vos ventes</div><div class="buttons"><button onclick="addToCart('Formation 3 — Resell',7.99)">Ajouter au panier — 7,99 €</button></div></div>
+  </div>
+
+  <!-- Fournisseurs physiques -->
+  <h2>Fournisseurs produits physiques</h2>
+  <div class="products">
+    <div class="product-card"><h3>Fournisseur Airpods</h3><div class="buttons"><button onclick="addToCart('Fournisseur Airpods',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>Fournisseur iPhone 15 (+ Formation Resell)</h3><div class="buttons"><button onclick="addToCart('Fournisseur iPhone 15 + Formation Resell',19.99)">Ajouter au panier — 19,99 €</button></div></div>
+    <div class="product-card"><h3>Fournisseur iPhone 14 Pro</h3><div class="buttons"><button onclick="addToCart('Fournisseur iPhone 14 Pro',9.99)">Ajouter au panier — 9,99 €</button></div></div>
+    <div class="product-card"><h3>Fournisseur iPhone 16 Pro</h3><div class="buttons"><button onclick="addToCart('Fournisseur iPhone 16 Pro',13.99)">Ajouter au panier — 13,99 €</button></div></div>
+    <div class="product-card"><h3>Fournisseur iPhone 14 Pro Max</h3><div class="buttons"><button onclick="addToCart('Fournisseur iPhone 14 Pro Max',11.99)">Ajouter au panier — 11,99 €</button></div></div>
+  </div>
+
+  <!-- Services & T-shirts -->
+  <h2>Services & T-shirts</h2>
+  <div class="products">
+    <div class="product-card"><h3>🛒 Boutique en ligne clé en main</h3><div class="buttons"><button onclick="addToCart('Boutique en ligne clé en main',24.99)">Ajouter au panier — 24,99 €</button></div></div>
+    <div class="product-card"><h3>🌐 Site vitrine simple et efficace</h3><div class="buttons"><button onclick="addToCart('Site vitrine simple et efficace',10)">Ajouter au panier — 10 €</button></div></div>
+    <div class="product-card"><h3>T-shirt Bleu</h3><div class="buttons"><button onclick="addToCart('T-shirt Bleu',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>T-shirt Rose</h3><div class="buttons"><button onclick="addToCart('T-shirt Rose',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>T-shirt Blanc</h3><div class="buttons"><button onclick="addToCart('T-shirt Blanc',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>T-shirt Gris</h3><div class="buttons"><button onclick="addToCart('T-shirt Gris',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>T-shirt Noir</h3><div class="buttons"><button onclick="addToCart('T-shirt Noir',5)">Ajouter au panier — 5 €</button></div></div>
+    <div class="product-card"><h3>Fournisseur exclusif Avis Google</h3>
+      <div class="description">
+        👉 Grâce à ce fournisseur exclusif, vous recevez 0,50 € à chaque avis Google que vous laissez.<br>
+        💸 Plus vous donnez d’avis, plus votre portefeuille se remplit !<br>
+        🔥 Accès pour seulement 9,99 €.
+      </div>
+      <div class="buttons"><button onclick="addToCart('Fournisseur exclusif Avis Google',9.99)">Ajouter au panier — 9,99 €</button></div>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(name + " a été ajouté au panier !");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement - Layzox Shop</title>
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: url('Images/tn.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header {
+      background: rgba(17,17,17,0.85);
+      padding:15px 25px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header a { color:#00ff00; text-decoration:none; font-weight:bold; }
+    h1 { color:#00ff00; margin:20px; }
+    .steps {
+      max-width:800px;
+      margin:20px auto;
+      background: rgba(17,17,17,0.7);
+      border-radius:12px;
+      padding:20px;
+    }
+    .step {
+      border:1px solid #00ff00;
+      padding:15px;
+      border-radius:8px;
+      margin-bottom:10px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .step.active { background: rgba(0,255,0,0.2); }
+    .step-content { display:none; margin-top:10px; }
+    .step.active .step-content { display:block; }
+
+    button {
+      background:#00ff00;
+      border:none;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:5px;
+      margin-right:5px;
+    }
+    button:hover { background:rgba(0,255,0,0.85); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paiement </h1>
+    <a href="panier.html">← Retour au panier</a>
+  </header>
+
+  <div class="steps">
+    <div class="step active" onclick="activateStep(0)">
+      <strong>Étape 1 : Paiement PayPal</strong>
+      <div class="step-content">
+        Envoyez le montant total au PayPal : <strong>metozyael1@gmail.com</strong><br>
+        <button onclick="copyEmail()">Copier l'e-mail</button>
+        <button onclick="window.open('https://www.paypal.com/fr/home','_blank')">Ouvrir PayPal</button>
+      </div>
+    </div>
+
+    <div class="step" onclick="activateStep(1)">
+      <strong>Étape 2 : Rejoindre Discord</strong>
+      <div class="step-content">
+        Rejoignez notre serveur Discord et ouvrez un ticket pour réclamer votre commande.<br>
+        <button onclick="window.open('https://discord.gg/w8FzN8Y7','_blank')">Rejoindre Discord</button>
+      </div>
+    </div>
+
+    <div class="step" onclick="activateStep(2)">
+      <strong>Étape 3 : En attente</strong>
+      <div class="step-content">
+        Votre commande est en attente de validation.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.step');
+    function activateStep(index) {
+      steps.forEach((s,i) => s.classList.toggle('active', i===index));
+    }
+    function copyEmail() {
+      navigator.clipboard.writeText('metozyael1@gmail.com').then(()=>alert('E-mail copié !'));
+    }
+  </script>
+</body>
+</html>
